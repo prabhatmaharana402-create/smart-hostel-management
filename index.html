@@ -1,605 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Hostel Management</title>
-
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Hostel Management System</title>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f1f5f9;
-    color: #1e293b;
-}
-
-header {
-    background: #142b4a;
-    color: white;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h2 {
-    font-size: 21px;
-}
-
-.layout {
-    display: flex;
-    min-height: calc(100vh - 65px);
-}
-
-nav {
-    width: 220px;
-    background: #193657;
-    padding: 20px 12px;
-}
-
-nav button {
-    width: 100%;
-    display: block;
-    text-align: left;
-    background: transparent;
-    color: white;
-    border: none;
-    padding: 14px;
-    margin-bottom: 8px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-nav button:hover,
-nav button.active {
-    background: #315780;
-}
-
-main {
-    flex: 1;
-    padding: 28px;
-    min-width: 0;
-}
-
-.page h1 {
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    color: #64748b;
-    margin-bottom: 24px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin: 22px 0;
-}
-
-.card, .panel {
-    background: white;
-    padding: 22px;
-    border-radius: 12px;
-    box-shadow: 0 3px 12px #00000008;
-    margin-bottom: 18px;
-}
-
-.card p {
-    color: #64748b;
-    font-size: 14px;
-}
-
-.card h2 {
-    margin-top: 12px;
-    color: #2563eb;
-    font-size: 30px;
-}
-
-.panel h3 {
-    margin-bottom: 18px;
-}
-
-input, select, textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 8px 0 16px;
-    border: 1px solid #cbd5e1;
-    border-radius: 7px;
-    font: inherit;
-}
-
-textarea {
-    min-height: 100px;
-}
-
-label {
-    font-weight: bold;
-    font-size: 14px;
-}
-
-.btn {
-    background: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 7px;
-    padding: 12px 16px;
-    cursor: pointer;
-    margin: 3px;
-}
-
-.btn:hover {
-    background: #1d4ed8;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 12px 8px;
-    border-bottom: 1px solid #e2e8f0;
-    text-align: left;
-    font-size: 14px;
-}
-
-th {
-    background: #f8fafc;
-}
-
-.status {
-    color: #92400e;
-    background: #fef3c7;
-    padding: 5px 8px;
-    border-radius: 15px;
-    font-size: 12px;
-}
-
-.hidden {
-    display: none;
-}
-
-.message {
-    margin-top: 14px;
-    color: #15803d;
-}
-
-@media(max-width: 900px) {
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width: 600px) {
-    header {
-        padding: 15px;
-    }
-
-    .layout {
-        display: block;
-    }
-
-    nav {
-        width: 100%;
-        display: flex;
-        overflow-x: auto;
-        padding: 8px;
-    }
-
-    nav button {
-        min-width: 110px;
-        text-align: center;
-        margin: 0 3px;
-    }
-
-    main {
-        padding: 15px;
-    }
-
-    .cards {
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-    }
-
-    .card, .panel {
-        padding: 14px;
-    }
-
-    .table-wrap {
-        overflow-x: auto;
-    }
-
-    table {
-        min-width: 450px;
-    }
-}
+:root{--navy:#14213d;--blue:#2563eb;--text:#172033;--muted:#667085;--line:#e6eaf0;--bg:#f3f6fb}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:var(--bg)}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.login-screen{min-height:100vh;display:grid;place-items:center;padding:28px 18px;overflow:hidden;position:relative;background:radial-gradient(circle at 15% 15%,#2dd4bf47,transparent 28%),radial-gradient(circle at 85% 80%,#60a5fa4d,transparent 30%),linear-gradient(135deg,#101b36,#183c69 52%,#166b7b)}
+.orb{position:absolute;border-radius:50%;filter:blur(1px);opacity:.48;pointer-events:none;animation:float 8s ease-in-out infinite}.orb-one{width:210px;height:210px;background:#60a5fa;top:7%;left:6%}.orb-two{width:270px;height:270px;background:#5eead4;bottom:4%;right:5%;animation-delay:-3s}.orb-three{width:100px;height:100px;background:#a78bfa;top:58%;left:13%;animation-delay:-5s}
+.login-wrap{position:relative;z-index:1;width:min(100%,940px);display:grid;grid-template-columns:1fr 1fr;border:1px solid #ffffff47;border-radius:28px;overflow:hidden;box-shadow:0 28px 90px #0004;animation:rise-in .75s cubic-bezier(.2,.8,.2,1) both;backdrop-filter:blur(12px)}
+.login-intro{color:white;padding:48px 40px;display:flex;flex-direction:column;justify-content:center;background:linear-gradient(145deg,#ffffff1f,#ffffff0a)}.brand-mark{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-size:30px;background:#ffffff29;border:1px solid #ffffff47;margin-bottom:24px;animation:pulse 3s ease-in-out infinite}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;opacity:.82}.login-intro h1{font-size:clamp(30px,4vw,43px);line-height:1.08;margin:12px 0 16px}.login-intro p{color:#ffffffc7;line-height:1.7;margin:0}.feature-list{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:12px}.feature-list li{display:flex;align-items:center;gap:10px;color:#ffffffeb;font-size:14px}.feature-check{display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#5eead433;color:#99f6e4}
+.login-panel{background:#fffffff8;padding:44px 42px;display:flex;flex-direction:column;justify-content:center}.login-panel h2{margin:0 0 8px;font-size:27px}.login-subtitle{margin:0 0 26px;color:var(--muted);font-size:14px;line-height:1.6}.field{margin-bottom:18px}.field label{display:block;margin-bottom:8px;font-size:13px;font-weight:750}.field input{width:100%;border:1px solid #d8dee9;border-radius:12px;padding:14px 15px;outline:none;background:#fbfcff;transition:.2s}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 4px #2563eb1f;transform:translateY(-1px)}.login-button{border:0;width:100%;border-radius:12px;padding:14px 18px;color:white;font-weight:800;background:linear-gradient(100deg,#2563eb,#0d9488);box-shadow:0 10px 22px #2563eb38;transition:transform .2s,box-shadow .2s}.login-button:hover{transform:translateY(-2px);box-shadow:0 14px 28px #2563eb47}.login-error{min-height:20px;color:#dc2626;font-size:13px;margin:8px 0 0}.login-note{font-size:12px;color:var(--muted);line-height:1.55;text-align:center;margin:16px 0 0}
+.app-shell{min-height:100vh;display:grid;grid-template-columns:245px minmax(0,1fr)}.sidebar{background:var(--navy);color:white;padding:25px 16px}.side-brand{display:flex;gap:11px;align-items:center;padding:0 10px 28px}.side-logo{width:42px;height:42px;border-radius:13px;background:#2563eb;display:grid;place-items:center;font-size:21px}.side-brand strong{display:block;font-size:14px}.side-brand small{display:block;margin-top:4px;color:#b9c6dc}.nav-label{color:#91a2c1;text-transform:uppercase;letter-spacing:.12em;font-size:10px;font-weight:800;padding:0 12px;margin:8px 0 10px}.nav-btn{display:flex;gap:12px;align-items:center;width:100%;padding:12px;border:0;border-radius:11px;color:#d6dfef;background:transparent;text-align:left;margin:4px 0;transition:.2s}.nav-btn:hover{background:#ffffff14;transform:translateX(2px)}.nav-btn.active{background:#2563eb;color:white}.sidebar-foot{color:#91a2c1;font-size:12px;line-height:1.6;padding:24px 12px 0;margin-top:28px;border-top:1px solid #ffffff1f}.main-area{min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 30px;background:white;border-bottom:1px solid var(--line)}.topbar h2{margin:0;font-size:21px}.topbar p{margin:5px 0 0;color:var(--muted);font-size:13px}.profile-chip{display:flex;gap:10px;align-items:center;padding:8px 12px;border:1px solid var(--line);border-radius:14px;background:#fbfcff}.avatar{display:grid;place-items:center;width:36px;height:36px;border-radius:12px;background:#dbeafe;color:#1d4ed8;font-weight:850}.profile-chip strong{display:block;font-size:13px}.profile-chip small{color:var(--muted)}.content{padding:28px 30px 40px;max-width:1300px;margin:auto}.welcome-card{padding:27px 30px;border-radius:20px;color:white;background:linear-gradient(110deg,#1d4ed8,#0f766e);display:flex;justify-content:space-between;gap:20px;align-items:center;box-shadow:0 18px 50px #18274b1f}.welcome-card h1{margin:0 0 8px;font-size:clamp(23px,3vw,30px)}.welcome-card p{margin:0;color:#ffffffd1;line-height:1.6}.welcome-icon{font-size:54px}.stats-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:22px 0}.stat-card,.card{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 6px 20px #18274b0a}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px}.stat-icon{width:38px;height:38px;display:grid;place-items:center;background:#eff6ff;border-radius:12px;font-size:19px}.stat-number{font-size:31px;font-weight:850;margin-top:14px}.stat-caption{color:var(--muted);font-size:12px;margin-top:4px}.grid-two,.section-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:18px}.card h3{margin:0 0 6px;font-size:17px}.card-intro{color:var(--muted);font-size:13px;line-height:1.55;margin:0 0 20px}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:13px}.form-field{margin-bottom:14px}.form-field label{display:block;font-size:12px;font-weight:750;margin-bottom:7px}.form-field input,.form-field select,.form-field textarea{width:100%;padding:11px 12px;border:1px solid #dce2ec;border-radius:10px;outline:none;background:#fcfdff}.form-field input:focus,.form-field select:focus,.form-field textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb1a}.form-field textarea{resize:vertical;min-height:90px}.primary-btn{background:var(--blue);color:white;border:0;border-radius:10px;padding:11px 15px;font-weight:750}.primary-btn:hover{background:#1d4ed8;transform:translateY(-1px)}.secondary-btn{background:#f1f5f9;color:#334155;border:1px solid #e2e8f0;border-radius:10px;padding:9px 12px;font-weight:700}.status-pill{display:inline-flex;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800;background:#fef3c7;color:#92400e}.status-pill.approved{background:#dcfce7;color:#166534}.priority-pill{display:inline-block;padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800}.priority-high{color:#991b1b;background:#fee2e2}.priority-medium{color:#92400e;background:#fef3c7}.priority-low{color:#166534;background:#dcfce7}.list{display:grid;gap:10px}.list-item{padding:13px;border:1px solid var(--line);border-radius:12px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.list-item strong{font-size:13px}.list-item p{margin:5px 0 0;color:var(--muted);font-size:12px;line-height:1.5}.empty-state{color:var(--muted);text-align:center;border:1px dashed #d7deea;border-radius:12px;padding:24px 12px;font-size:13px}.section-title{margin:0 0 16px;font-size:20px}.footer-note{color:var(--muted);font-size:12px;margin-top:20px;line-height:1.6}.toast{position:fixed;right:20px;bottom:20px;z-index:20;background:#14213d;color:white;padding:13px 17px;border-radius:12px;box-shadow:0 18px 50px #18274b1f;animation:rise-in .25s ease both;max-width:calc(100vw - 40px)}
+@keyframes float{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-22px) translateX(12px)}}@keyframes rise-in{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@media(max-width:850px){.login-wrap{grid-template-columns:1fr;max-width:510px}.login-intro{padding:30px}.login-intro p,.feature-list{display:none}.brand-mark{margin-bottom:14px}.login-panel{padding:32px 28px}.app-shell{grid-template-columns:1fr}.sidebar{padding:14px}.side-brand{padding-bottom:12px}.nav-label,.sidebar-foot{display:none}.nav-list{display:flex;gap:5px;overflow-x:auto}.nav-btn{min-width:max-content;width:auto;margin:0}.topbar{padding:17px 18px}.content{padding:20px 16px 30px}}
+@media(max-width:620px){.stats-grid,.grid-two,.section-grid,.form-row{grid-template-columns:1fr}.welcome-card{padding:22px}.welcome-icon{display:none}.profile-chip{padding:6px}.profile-text{display:none}.topbar h2{font-size:18px}.card{padding:18px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
-
 <body>
-
-<header>
-    <h2>🏠 Smart Hostel</h2>
-    <span>Student Portal</span>
-</header>
-
-<div class="layout">
-
-<nav>
-    <button class="active" onclick="showPage('dashboard',this)">
-        🏠 Dashboard
-    </button>
-
-    <button onclick="showPage('complaints',this)">
-        📝 Complaints
-    </button>
-
-    <button onclick="showPage('gatepass',this)">
-        🎫 Gate Pass
-    </button>
-
-    <button onclick="showPage('approvals',this)">
-        ✅ Approvals
-    </button>
-</nav>
-
-<main>
-
-<section id="dashboard" class="page">
-    <h1>Welcome to Smart Hostel 👋</h1>
-    <p class="subtitle">
-        Manage your hostel complaints and outing requests.
-    </p>
-
-    <div class="cards">
-        <div class="card">
-            <p>Total Complaints</p>
-            <h2 id="totalComplaints">0</h2>
-        </div>
-
-        <div class="card">
-            <p>Pending Complaints</p>
-            <h2 id="pendingComplaints">0</h2>
-        </div>
-
-        <div class="card">
-            <p>Gate Pass Requests</p>
-            <h2 id="totalPasses">0</h2>
-        </div>
-
-        <div class="card">
-            <p>Approved Passes</p>
-            <h2 id="approvedPasses">0</h2>
-        </div>
-    </div>
-
-    <div class="panel">
-        <h3>Recent Complaints</h3>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Category</th>
-                        <th>Priority</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="recentComplaints"></tbody>
-            </table>
-        </div>
-    </div>
+<section class="login-screen" id="loginScreen">
+  <div class="orb orb-one"></div><div class="orb orb-two"></div><div class="orb orb-three"></div>
+  <div class="login-wrap">
+    <div class="login-intro"><div class="brand-mark" aria-hidden="true">🏡</div><div class="eyebrow">Student Portal</div><h1>Smart Hostel<br>Management</h1><p>A smarter way to manage hostel life. Submit complaints, request gate passes, and follow your requests from one simple dashboard.</p><ul class="feature-list"><li><span class="feature-check">✓</span> Easy complaint tracking</li><li><span class="feature-check">✓</span> Digital gate-pass requests</li><li><span class="feature-check">✓</span> Clear request status</li></ul></div>
+    <form class="login-panel" id="loginForm"><h2>Welcome back 👋</h2><p class="login-subtitle">Enter your details to open the student dashboard.</p>
+      <div class="field"><label for="studentName">Student name</label><input id="studentName" type="text" placeholder="Enter your full name" autocomplete="name" maxlength="80" required></div>
+      <div class="field"><label for="regdNo">Registration number</label><input id="regdNo" type="text" placeholder="Enter your registration number" maxlength="40" required></div>
+      <button class="login-button" type="submit">Enter Dashboard <span aria-hidden="true">→</span></button><p class="login-error" id="loginError" role="alert"></p><p class="login-note">Project demo only: these details are not verified yet. Secure verification can be added with a backend and MySQL.</p>
+    </form>
+  </div>
 </section>
-
-<section id="complaints" class="page hidden">
-    <h1>Complaint Management</h1>
-    <p class="subtitle">
-        Submit cleaning or water complaints and track progress.
-    </p>
-
-    <div class="panel">
-        <h3>Submit a Complaint</h3>
-
-        <form id="complaintForm">
-            <label for="category">Complaint Category</label>
-            <select id="category" required>
-                <option value="">Select category</option>
-                <option>Cleaning</option>
-                <option>Water</option>
-            </select>
-
-            <label for="location">Hostel Block / Room</label>
-            <input id="location" required
-                   placeholder="Example: Block A, Room 101">
-
-            <label for="description">Complaint Description</label>
-            <textarea id="description" required minlength="5"
-                      placeholder="Describe your problem..."></textarea>
-
-            <button class="btn" type="submit">
-                Submit Complaint
-            </button>
-        </form>
-
-        <p id="complaintMessage" class="message"></p>
+<div class="app-shell hidden" id="appShell">
+  <aside class="sidebar"><div class="side-brand"><div class="side-logo">🏡</div><div><strong>Smart Hostel</strong><small>Management System</small></div></div><div class="nav-label">Workspace</div>
+    <nav class="nav-list" aria-label="Main navigation"><button class="nav-btn active" data-page="dashboard">▦ &nbsp;Dashboard</button><button class="nav-btn" data-page="complaints">🛠️ &nbsp;Complaints</button><button class="nav-btn" data-page="gatepasses">🎫 &nbsp;Gate Pass</button></nav>
+    <div class="sidebar-foot">Student portal prototype<br>Data is stored only in this browser session.</div>
+  </aside>
+  <main class="main-area"><header class="topbar"><div><h2 id="pageHeading">Dashboard</h2><p id="pageSubheading">A clear view of your hostel requests.</p></div><div class="profile-chip"><div class="avatar" id="avatarInitials">ST</div><div class="profile-text"><strong id="profileName">Student</strong><small id="profileRegd">Registration number</small></div><button class="secondary-btn" id="logoutButton" type="button">Logout</button></div></header>
+    <div class="content">
+      <section id="dashboardPage"><div class="welcome-card"><div><h1 id="welcomeTitle">Welcome to your hostel dashboard!</h1><p>Manage complaints and gate-pass requests from one place.</p></div><div class="welcome-icon" aria-hidden="true">🏡</div></div>
+        <div class="stats-grid"><article class="stat-card"><div class="stat-top"><span>My complaints</span><span class="stat-icon">🛠️</span></div><div class="stat-number" id="complaintCount">0</div><div class="stat-caption">Complaints submitted in this session</div></article><article class="stat-card"><div class="stat-top"><span>Gate-pass requests</span><span class="stat-icon">🎫</span></div><div class="stat-number" id="gatePassCount">0</div><div class="stat-caption">Requests created in this session</div></article><article class="stat-card"><div class="stat-top"><span>Pending requests</span><span class="stat-icon">⏳</span></div><div class="stat-number" id="pendingCount">0</div><div class="stat-caption">Awaiting demo approval</div></article></div>
+        <div class="grid-two"><section class="card"><h3>Submit a complaint</h3><p class="card-intro">Report an issue in your hostel. A demo priority suggestion will be shown from keywords.</p><form id="complaintForm"><div class="form-row"><div class="form-field"><label for="complaintCategory">Category</label><select id="complaintCategory"><option>Cleaning</option><option>Water</option><option>Electricity</option><option>Maintenance</option><option>Other</option></select></div><div class="form-field"><label for="complaintLocation">Location / room</label><input id="complaintLocation" placeholder="e.g. Block A, Room 204" required maxlength="100"></div></div><div class="form-field"><label for="complaintDescription">Describe the issue</label><textarea id="complaintDescription" placeholder="Explain the problem..." required maxlength="1000"></textarea></div><button class="primary-btn" type="submit">Submit complaint</button></form></section><section class="card"><h3>Recent complaints</h3><p class="card-intro">Your latest complaints and suggested priority.</p><div class="list" id="recentComplaints"><div class="empty-state">No complaints submitted yet.</div></div></section></div>
+        <p class="footer-note">Prototype notice: complaint priority uses simple keywords, not a trained AI/ML model. Requests are not stored in MySQL yet.</p>
+      </section>
+      <section id="complaintsPage" class="hidden"><h2 class="section-title">My complaints</h2><div class="card"><p class="card-intro">All complaints submitted during this browser session.</p><div class="list" id="allComplaints"><div class="empty-state">No complaints submitted yet.</div></div></div></section>
+      <section id="gatepassesPage" class="hidden"><h2 class="section-title">Gate-pass management</h2><div class="section-grid"><section class="card"><h3>Request a gate pass</h3><p class="card-intro">Enter outing details. Mentor and parent decisions are demo controls for presentation.</p><form id="gatePassForm"><div class="form-field"><label for="gateReason">Reason for leaving</label><select id="gateReason" required><option value="">Select reason</option><option>Personal work</option><option>Medical appointment</option><option>Shopping</option><option>Family visit</option><option>Other</option></select></div><div class="form-field"><label for="gateDestination">Destination</label><input id="gateDestination" placeholder="Where are you going?" required maxlength="150"></div><div class="form-row"><div class="form-field"><label for="departureTime">Departure</label><input id="departureTime" type="datetime-local" required></div><div class="form-field"><label for="returnTime">Expected return</label><input id="returnTime" type="datetime-local" required></div></div><button class="primary-btn" type="submit">Request gate pass</button></form></section><section class="card"><h3>My gate-pass requests</h3><p class="card-intro">Use demo buttons to show approval states.</p><div class="list" id="gatePassList"><div class="empty-state">No gate-pass requests yet.</div></div></section></div><p class="footer-note">Demo limitation: approval buttons illustrate the workflow only. Real mentor/parent approval needs a backend.</p></section>
     </div>
-
-    <div class="panel">
-        <h3>My Complaints</h3>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Category</th>
-                        <th>Priority</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="complaintList"></tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<section id="gatepass" class="page hidden">
-    <h1>Digital Gate Pass</h1>
-    <p class="subtitle">
-        Request permission for an outing.
-    </p>
-
-    <div class="panel">
-        <h3>New Gate Pass Request</h3>
-
-        <form id="gatepassForm">
-            <label for="purpose">Purpose of Outing</label>
-            <input id="purpose" required
-                   placeholder="Example: Going home">
-
-            <label for="outingDate">Outing Date and Time</label>
-            <input id="outingDate" type="datetime-local" required>
-
-            <label for="returnDate">Expected Return Date and Time</label>
-            <input id="returnDate" type="datetime-local" required>
-
-            <button class="btn" type="submit">
-                Submit Request
-            </button>
-        </form>
-
-        <p id="gatepassMessage" class="message"></p>
-    </div>
-
-    <div class="panel">
-        <h3>My Gate Pass Requests</h3>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Request ID</th>
-                        <th>Purpose</th>
-                        <th>Mentor</th>
-                        <th>Parent</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody id="gatepassList"></tbody>
-            </table>
-        </div>
-    </div>
-</section>
-
-<section id="approvals" class="page hidden">
-    <h1>Gate Pass Approvals</h1>
-    <p class="subtitle">
-        Demo controls for the mentor and parent approval workflow.
-    </p>
-
-    <div class="panel">
-        <h3>Pending Requests</h3>
-        <div id="approvalList"></div>
-    </div>
-
-    <p class="subtitle">
-        Demo only: a real backend must verify user roles and store
-        approval decisions securely.
-    </p>
-</section>
-
-</main>
+  </main>
 </div>
-
+<div class="toast hidden" id="toast" role="status" aria-live="polite"></div>
 <script>
-let complaints = [];
-let gatepasses = [];
-
-function showPage(page, button) {
-    document.querySelectorAll('.page').forEach(section => {
-        section.classList.add('hidden');
-    });
-
-    document.getElementById(page).classList.remove('hidden');
-
-    document.querySelectorAll('nav button').forEach(btn => {
-        btn.classList.remove('active');
-    });
-
-    button.classList.add('active');
-    render();
-}
-
-function escapeHTML(value) {
-    return String(value).replace(/[&<>"']/g, char => ({
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        "'": '&#39;'
-    })[char]);
-}
-
-function getPriority(description) {
-    if (/emergency|fire|electric shock|danger|urgent/i.test(description)) {
-        return 'High';
-    }
-
-    if (/leak|dirty|blocked|broken|smell|shortage/i.test(description)) {
-        return 'Medium';
-    }
-
-    return 'Low';
-}
-
-document.getElementById('complaintForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const description = document.getElementById('description').value.trim();
-
-    complaints.unshift({
-        id: 'CMP' + Date.now().toString().slice(-6),
-        category: document.getElementById('category').value,
-        location: document.getElementById('location').value.trim(),
-        description: description,
-        priority: getPriority(description),
-        status: 'Pending'
-    });
-
-    this.reset();
-
-    document.getElementById('complaintMessage').textContent =
-        'Demo complaint submitted successfully!';
-
-    render();
-});
-
-document.getElementById('gatepassForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    const outing = document.getElementById('outingDate').value;
-    const returning = document.getElementById('returnDate').value;
-
-    if (new Date(returning) <= new Date(outing)) {
-        document.getElementById('gatepassMessage').textContent =
-            'Return time must be after the outing time.';
-        return;
-    }
-
-    gatepasses.unshift({
-        id: 'GP' + Date.now().toString().slice(-6),
-        purpose: document.getElementById('purpose').value.trim(),
-        mentor: 'Pending',
-        parent: 'Pending',
-        status: 'Pending',
-        outing: outing,
-        returning: returning
-    });
-
-    this.reset();
-
-    document.getElementById('gatepassMessage').textContent =
-        'Demo gate-pass request submitted!';
-
-    render();
-});
-
-function decide(id, role, decision) {
-    const request = gatepasses.find(item => item.id === id);
-
-    if (!request || request.status === 'Approved' ||
-        request.status === 'Rejected') {
-        return;
-    }
-
-    request[role] = decision;
-
-    if (decision === 'Rejected') {
-        request.status = 'Rejected';
-    } else if (
-        request.mentor === 'Approved' &&
-        request.parent === 'Approved'
-    ) {
-        request.status = 'Approved';
-    }
-
-    render();
-}
-
-function render() {
-    document.getElementById('totalComplaints').textContent =
-        complaints.length;
-
-    document.getElementById('pendingComplaints').textContent =
-        complaints.filter(item => item.status !== 'Resolved').length;
-
-    document.getElementById('totalPasses').textContent =
-        gatepasses.length;
-
-    document.getElementById('approvedPasses').textContent =
-        gatepasses.filter(item => item.status === 'Approved').length;
-
-    const complaintRows = complaints.map(item => `
-        <tr>
-            <td>${escapeHTML(item.id)}</td>
-            <td>${escapeHTML(item.category)}</td>
-            <td>${escapeHTML(item.priority)}</td>
-            <td><span class="status">${escapeHTML(item.status)}</span></td>
-        </tr>
-    `).join('');
-
-    document.getElementById('complaintList').innerHTML =
-        complaintRows || '<tr><td colspan="4">No complaints yet.</td></tr>';
-
-    document.getElementById('recentComplaints').innerHTML =
-        complaints.slice(0, 5).map(item => `
-            <tr>
-                <td>${escapeHTML(item.id)}</td>
-                <td>${escapeHTML(item.category)}</td>
-                <td>${escapeHTML(item.priority)}</td>
-                <td><span class="status">${escapeHTML(item.status)}</span></td>
-            </tr>
-        `).join('') || '<tr><td colspan="4">No complaints yet.</td></tr>';
-
-    document.getElementById('gatepassList').innerHTML =
-        gatepasses.map(item => `
-            <tr>
-                <td>${escapeHTML(item.id)}</td>
-                <td>${escapeHTML(item.purpose)}</td>
-                <td>${escapeHTML(item.mentor)}</td>
-                <td>${escapeHTML(item.parent)}</td>
-                <td><span class="status">${escapeHTML(item.status)}</span></td>
-            </tr>
-        `).join('') || '<tr><td colspan="5">No requests yet.</td></tr>';
-
-    document.getElementById('approvalList').innerHTML =
-        gatepasses.map(item => `
-            <div class="panel">
-                <h3>${escapeHTML(item.id)} — ${escapeHTML(item.purpose)}</h3>
-                <p>Mentor: ${escapeHTML(item.mentor)}</p>
-                <p>Parent: ${escapeHTML(item.parent)}</p>
-                <p>Status: ${escapeHTML(item.status)}</p>
-                ${item.status === 'Pending' ? `
-                    <button class="btn" onclick="decide('${item.id}','mentor','Approved')">
-                        Mentor Approve
-                    </button>
-                    <button class="btn" onclick="decide('${item.id}','parent','Approved')">
-                        Parent Approve
-                    </button>
-                    <button class="btn" onclick="decide('${item.id}','mentor','Rejected')">
-                        Reject Request
-                    </button>
-                ` : ''}
-            </div>
-        `).join('') || '<p>No gate-pass requests available.</p>';
-}
-
-render();
+const $=id=>document.getElementById(id);
+const state={studentName:"",regdNo:"",complaints:[],gatePasses:[]};
+function showToast(message){const t=$("toast");t.textContent=message;t.classList.remove("hidden");clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>t.classList.add("hidden"),3000)}
+$("loginForm").addEventListener("submit",e=>{e.preventDefault();const name=$("studentName").value.trim(),regd=$("regdNo").value.trim();if(!name||!regd){$("loginError").textContent="Please enter both your name and registration number.";return}state.studentName=name;state.regdNo=regd;$("loginError").textContent="";$("profileName").textContent=name;$("profileRegd").textContent=regd;$("avatarInitials").textContent=name.split(/\s+/).slice(0,2).map(x=>x[0]).join("").toUpperCase();$("welcomeTitle").textContent=`Welcome, ${name.split(/\s+/)[0]}!`;$("loginScreen").classList.add("hidden");$("appShell").classList.remove("hidden");renderAll()});
+$("logoutButton").addEventListener("click",()=>{$("appShell").classList.add("hidden");$("loginScreen").classList.remove("hidden");$("studentName").value=state.studentName;$("regdNo").value=state.regdNo;showPage("dashboard")});
+function showPage(page){const pages={dashboard:"dashboardPage",complaints:"complaintsPage",gatepasses:"gatepassesPage"};Object.entries(pages).forEach(([key,id])=>$(id).classList.toggle("hidden",key!==page));document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.page===page));const labels={dashboard:["Dashboard","A clear view of your hostel requests."],complaints:["Complaints","Track the issues you have reported."],gatepasses:["Gate Pass","Manage your outing requests."]};$("pageHeading").textContent=labels[page][0];$("pageSubheading").textContent=labels[page][1]}
+document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+function suggestPriority(text){const t=text.toLowerCase();if(/emergency|danger|fire|electric shock|severe|burst pipe|no water|urgent/.test(t))return"High";if(/leak|broken|dirty|blocked|not working|repair|smell|overflow/.test(t))return"Medium";return"Low"}
+function node(tag,text,cls){const e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}
+function renderComplaints(targetId,limit){const target=$(targetId);target.replaceChildren();const items=typeof limit==="number"?state.complaints.slice(0,limit):state.complaints;if(!items.length){target.append(node("div","No complaints submitted yet.","empty-state"));return}items.forEach(item=>{const box=node("article","","list-item"),details=document.createElement("div"),right=document.createElement("div");details.append(node("strong",`${item.category} · ${item.location}`),node("p",item.description),node("p",`Status: ${item.status} · ${item.createdAt}`));right.append(node("span",item.priority,`priority-pill priority-${item.priority.toLowerCase()}`));box.append(details,right);target.append(box)})}
+function renderGatePasses(){const target=$("gatePassList");target.replaceChildren();if(!state.gatePasses.length){target.append(node("div","No gate-pass requests yet.","empty-state"));return}state.gatePasses.forEach(item=>{const box=node("article","","list-item"),details=document.createElement("div"),controls=document.createElement("div"),status=document.createElement("div");details.append(node("strong",`${item.reason} · ${item.destination}`),node("p",`Departure: ${new Date(item.departure).toLocaleString()}`),node("p",`Return: ${new Date(item.returning).toLocaleString()}`),node("p",`Mentor: ${item.mentor} · Parent: ${item.parent}`));const mentor=node("button","Mentor ✓","secondary-btn");mentor.type="button";mentor.addEventListener("click",()=>{item.mentor="Approved";renderAll();showToast("Demo: mentor approved.")});const parent=node("button","Parent ✓","secondary-btn");parent.type="button";parent.style.marginTop="6px";parent.addEventListener("click",()=>{item.parent="Approved";renderAll();showToast("Demo: parent approved.")});controls.append(mentor,document.createElement("br"),parent);const overall=item.mentor==="Approved"&&item.parent==="Approved"?"Approved":"Pending";status.append(node("span",overall,`status-pill ${overall==="Approved"?"approved":""}`));box.append(details,controls,status);target.append(box)})}
+$("complaintForm").addEventListener("submit",e=>{e.preventDefault();const category=$("complaintCategory").value,location=$("complaintLocation").value.trim(),description=$("complaintDescription").value.trim();if(!location||!description)return;const priority=suggestPriority(`${category} ${description}`);state.complaints.unshift({category,location,description,priority,status:"Submitted",createdAt:new Date().toLocaleString()});$("complaintForm").reset();renderAll();showToast(`Complaint submitted. Demo priority: ${priority}.`)});
+$("gatePassForm").addEventListener("submit",e=>{e.preventDefault();const reason=$("gateReason").value,destination=$("gateDestination").value.trim(),departure=$("departureTime").value,returning=$("returnTime").value;if(!reason||!destination||!departure||!returning)return;if(new Date(returning)<=new Date(departure)){showToast("Return time must be after departure time.");return}state.gatePasses.unshift({reason,destination,departure,returning,mentor:"Pending",parent:"Pending"});$("gatePassForm").reset();renderAll();showToast("Gate-pass request created.")});
+function renderAll(){$("complaintCount").textContent=state.complaints.length;$("gatePassCount").textContent=state.gatePasses.length;$("pendingCount").textContent=state.complaints.filter(c=>c.status==="Submitted").length+state.gatePasses.filter(g=>g.mentor!=="Approved"||g.parent!=="Approved").length;renderComplaints("recentComplaints",3);renderComplaints("allComplaints");renderGatePasses()}
 </script>
-
 </body>
 </html>
